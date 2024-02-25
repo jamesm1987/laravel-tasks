@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Http\Requests\Category;
+
+
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
+use App\Models\TaskCategory;
+
+class CategoryDeleteRequest extends FormRequest
+{
+   
+   
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+
+        $model = $this->route('category');
+
+
+        return Gate::allows('delete', $model);
+    }
+    
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [];
+    }
+}
